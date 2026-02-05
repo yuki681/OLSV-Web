@@ -10,5 +10,68 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 0) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_05_112213) do
+  create_table "actions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description_ja"
+    t.text "name_ja"
+    t.string "source_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_actions_on_source_id", unique: true
+  end
+
+  create_table "license_notices", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "license_id", null: false
+    t.integer "notice_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["license_id", "notice_id"], name: "index_license_notices_on_license_id_and_notice_id", unique: true
+    t.index ["license_id"], name: "index_license_notices_on_license_id"
+    t.index ["notice_id"], name: "index_license_notices_on_notice_id"
+  end
+
+  create_table "licenses", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.text "description_ja"
+    t.string "name", null: false
+    t.string "source_id", null: false
+    t.text "summary_ja"
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_licenses_on_source_id", unique: true
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.text "content_ja"
+    t.datetime "created_at", null: false
+    t.text "description_ja"
+    t.string "source_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_notices_on_source_id", unique: true
+  end
+
+  create_table "permission_actions", force: :cascade do |t|
+    t.integer "action_id", null: false
+    t.datetime "created_at", null: false
+    t.integer "permission_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_id"], name: "index_permission_actions_on_action_id"
+    t.index ["permission_id", "action_id"], name: "index_permission_actions_on_permission_id_and_action_id", unique: true
+    t.index ["permission_id"], name: "index_permission_actions_on_permission_id"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description_ja"
+    t.integer "license_id", null: false
+    t.text "summary_ja"
+    t.datetime "updated_at", null: false
+    t.index ["license_id"], name: "index_permissions_on_license_id"
+  end
+
+  add_foreign_key "license_notices", "licenses"
+  add_foreign_key "license_notices", "notices"
+  add_foreign_key "permission_actions", "actions"
+  add_foreign_key "permission_actions", "permissions"
+  add_foreign_key "permissions", "licenses"
 end
