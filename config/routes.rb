@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "licenses#index" # 仮（トップページは別途作成する）
-  resources :licenses, only: [:index, :show]
+  resources :licenses, only: [ :index, :show ]
 end

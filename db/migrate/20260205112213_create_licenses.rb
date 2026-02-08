@@ -39,13 +39,13 @@ class CreateLicenses < ActiveRecord::Migration[8.1]
       t.references :notice, null: false, foreign_key: true
       t.timestamps
     end
-    add_index :license_notices, [:license_id, :notice_id], unique: true
+    add_index :license_notices, [ :license_id, :notice_id ], unique: true
 
     create_table :permission_actions do |t|
       t.references :permission, null: false, foreign_key: true
       t.references :action, null: false, foreign_key: true
       t.timestamps
     end
-    add_index :permission_actions, [:permission_id, :action_id], unique: true
+    add_index :permission_actions, [ :permission_id, :action_id ], unique: true
   end
 end

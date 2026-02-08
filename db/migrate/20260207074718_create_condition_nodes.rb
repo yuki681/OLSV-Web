@@ -7,7 +7,7 @@ class CreateConditionNodes < ActiveRecord::Migration[8.1]
       t.references :permission, null: false, foreign_key: true
       t.references :condition, foreign_key: true
       t.references :parent_node, foreign_key: { to_table: :condition_nodes }
-      
+
       t.timestamps
     end
 
