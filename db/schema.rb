@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_05_112213) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_07_074718) do
   create_table "actions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description_ja"
@@ -18,6 +18,29 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_05_112213) do
     t.string "source_id", null: false
     t.datetime "updated_at", null: false
     t.index ["source_id"], name: "index_actions_on_source_id", unique: true
+  end
+
+  create_table "condition_nodes", force: :cascade do |t|
+    t.integer "condition_id"
+    t.datetime "created_at", null: false
+    t.string "node_type", null: false
+    t.integer "parent_node_id"
+    t.integer "permission_id", null: false
+    t.integer "sort_order", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.index ["condition_id"], name: "index_condition_nodes_on_condition_id"
+    t.index ["parent_node_id"], name: "index_condition_nodes_on_parent_node_id"
+    t.index ["permission_id"], name: "index_condition_nodes_on_permission_id"
+  end
+
+  create_table "conditions", force: :cascade do |t|
+    t.string "condition_type", null: false
+    t.datetime "created_at", null: false
+    t.text "description_ja"
+    t.text "name_ja"
+    t.string "source_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_conditions_on_source_id", unique: true
   end
 
   create_table "license_notices", force: :cascade do |t|
@@ -69,6 +92,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_05_112213) do
     t.index ["license_id"], name: "index_permissions_on_license_id"
   end
 
+  add_foreign_key "condition_nodes", "condition_nodes", column: "parent_node_id"
+  add_foreign_key "condition_nodes", "conditions"
+  add_foreign_key "condition_nodes", "permissions"
   add_foreign_key "license_notices", "licenses"
   add_foreign_key "license_notices", "notices"
   add_foreign_key "permission_actions", "actions"
