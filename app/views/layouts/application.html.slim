@@ -10,13 +10,14 @@ html lang="ja"
     = csrf_meta_tags
     = csp_meta_tag
 
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    
-    body.bg-light
-      / Navbar
-      nav.navbar.navbar-expand-lg.bg-white.border-bottom
-        .container
-          = link_to "OSS License Simple Viewer Web", root_path, class: "navbar-brand fw-semibold"
+
+  body.bg-light
+    / Navbar
+    nav.navbar.navbar-expand-lg.bg-white.border-bottom
+      .container
+        = link_to "OSS License Simple Viewer Web", root_path, class: "navbar-brand fw-semibold"
 
     / Main content
     main

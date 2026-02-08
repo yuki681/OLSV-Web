@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
-  root "license#index" # 仮（トップページは別途作成する）
-  resources :license, only: [:index, :show]
+  root "licenses#index" # 仮（トップページは別途作成する）
+  resources :licenses, only: [:index, :show]
 end

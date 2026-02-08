@@ -46,6 +46,9 @@ gem "slim-rails", "~> 4.0.0"
 # Use CSS bundling for Rails [https://github.com/rails/cssbundling-rails]
 gem "cssbundling-rails", "~> 1.4.3"
 
+# Use JS bundling for Rails [https://github.com/rails/jsbundling-rails]
+gem "jsbundling-rails", "~> 1.3.1"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

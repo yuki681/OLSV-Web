@@ -1,0 +1,9 @@
+- child_nodes = node.child_nodes.sort_by(&:sort_order)
+
+p = text
+.card
+  ol.list-group.list-group-numbered
+    - child_nodes.each do |node|
+      li.list-group-item.d-flex.align-items-start
+        .ms-2.me-auto
+          = render_condition_tree(node)

@@ -1,0 +1,74 @@
+= content_for(:title, "#{@license.name} | OSS License Simple Viewer Web")
+
+/ Header
+.d-flex.align-items-start.justify-content-between.gap-3.mb-3
+  .flex-grow-1
+    h1.h3.mb-2 = @license.name
+
+- if @license.summary_ja.present?
+  p.mb-0 = simple_format(@license.summary_ja)
+- if @license.description_ja.present?
+  p.mb-0 = simple_format(@license.description_ja)
+
+/ Actions
+h2.h5.mt-4.mb-2 ユースケースごとの責務
+hr
+
+- if @license.permissions.any?
+  .accordion id="permissionsAccordion"
+    - @license.permissions.each_with_index do |permission, pidx|
+    
+      - permission.actions.each_with_index do |action, aidx|
+        - item_id = "perm#{permission.id || pidx}-act#{action.id || aidx}"
+        - header_id = "#{item_id}-header"
+        - body_id = "#{item_id}-body"
+        
+        .accordion-item
+          h2.accordion-header id=header_id
+            button.accordion-button.collapsed type="button" data-bs-toggle="collapse" data-bs-target="##{body_id}" aria-expanded="false" aria-controls=body_id
+              = action.name_ja.present? ? action.name_ja : "ユースケース #{pidx + 1}"
+
+          .accordion-collapse.collapse id=body_id aria-labelledby=header_id data-bs-parent="#permissionsAccordion"
+            .accordion-body
+              / TODO: Resolve N+1 query for condition nodes
+              - head = permission.condition_head
+              .mb-3
+                - if head
+                  = render_condition_tree(head)
+                - else
+                  p 責務なし
+
+              - if permission.description_ja.present?
+                .alert.alert-secondary.mb-0
+                  .fw-semibold.mb-1 補足
+                  = simple_format(permission.description_ja)
+
+- else
+  .alert.alert-secondary.mb-4 ユースケース（permissions）のデータがありません。
+
+/ Notices
+h2.h5.mt-4.mb-2 注意事項
+hr
+- if @license.notices.any?
+  .list-group.mb-4
+    - @license.notices.each_with_index do |n, i|
+      - if n.content_ja.present?
+        .mt-2
+          p.mb-0 = n.content_ja
+      - if n.description_ja.present?
+      
+        .alert.alert-secondary.mt-2.mb-4
+          p.mb-2 補足:
+          p.mb-0 = n.description_ja
+
+- else
+  .alert.alert-secondary.mb-4 notices はありません。
+
+/ License content (collapsed)
+h2.h5.mt-4.mb-2 ライセンス本文
+hr
+- if @license.content.present?
+  .card.mb-4
+    pre.card-body style="white-space:pre-wrap;" = @license.content
+- else
+  .alert.alert-secondary.mb-4 ライセンス本文のデータがありません

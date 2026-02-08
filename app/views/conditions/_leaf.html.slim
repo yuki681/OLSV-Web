@@ -1,0 +1,7 @@
+- condition = node.condition
+
+.d-flex.flex-column.gap-2
+  - if condition&.name_ja.present?
+    = simple_format(condition.name_ja, { class: "mb-0" }, wrapper_tag: "div")
+  - if condition&.description_ja.present?
+    = simple_format(condition.description_ja, { class: "mb-0" }, wrapper_tag: "div")
