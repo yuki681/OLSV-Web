@@ -1,0 +1,15 @@
+- q = local_assigns[:q]
+
+.container
+  .row.justify-content-center
+    .col-12.col-lg-10
+      = form_with url: licenses_path, method: :get, local: true, class: "mb-4" do |f|
+        .input-group.input-group-lg
+          = f.search_field :q,
+              value: q,
+              placeholder: "例: MIT, Apache-2.0, GPL, permissive ...",
+              class: "form-control",
+              aria: { label: "Search licenses" }
+          = f.button type: "submit", class: "btn btn-primary" do
+            i.bi.bi-search.me-2
+            | 検索
