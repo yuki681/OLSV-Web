@@ -17,6 +17,10 @@ class CreateConditionNodes < ActiveRecord::Migration[8.1]
       t.text :name_ja
       t.text :description_ja
 
+      t.string :schema_version # 使用しないが、元データに存在するので取り込み
+      t.text :uri # 使用しないが、元データに存在するので取り込み
+      t.text :base_uri # 使用しないが、元データに存在するので取り込み
+
       t.timestamps
     end
   end

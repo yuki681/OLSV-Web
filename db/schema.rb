@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema[8.1].define(version: 2026_02_07_074718) do
   create_table "actions", force: :cascade do |t|
+    t.text "base_uri"
     t.datetime "created_at", null: false
     t.text "description_ja"
     t.text "name_ja"
+    t.string "schema_version"
     t.string "source_id", null: false
     t.datetime "updated_at", null: false
+    t.text "uri"
     t.index ["source_id"], name: "index_actions_on_source_id", unique: true
   end
 
@@ -34,12 +37,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_074718) do
   end
 
   create_table "conditions", force: :cascade do |t|
+    t.text "base_uri"
     t.string "condition_type", null: false
     t.datetime "created_at", null: false
     t.text "description_ja"
     t.text "name_ja"
+    t.string "schema_version"
     t.string "source_id", null: false
     t.datetime "updated_at", null: false
+    t.text "uri"
     t.index ["source_id"], name: "index_conditions_on_source_id", unique: true
   end
 
@@ -54,22 +60,28 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_07_074718) do
   end
 
   create_table "licenses", force: :cascade do |t|
+    t.text "base_uri"
     t.text "content"
     t.datetime "created_at", null: false
     t.text "description_ja"
     t.string "name", null: false
+    t.string "schema_version"
     t.string "source_id", null: false
     t.text "summary_ja"
     t.datetime "updated_at", null: false
+    t.text "uri"
     t.index ["source_id"], name: "index_licenses_on_source_id", unique: true
   end
 
   create_table "notices", force: :cascade do |t|
+    t.text "base_uri"
     t.text "content_ja"
     t.datetime "created_at", null: false
     t.text "description_ja"
+    t.string "schema_version"
     t.string "source_id", null: false
     t.datetime "updated_at", null: false
+    t.text "uri"
     t.index ["source_id"], name: "index_notices_on_source_id", unique: true
   end
 

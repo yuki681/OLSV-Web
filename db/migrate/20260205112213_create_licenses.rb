@@ -7,6 +7,10 @@ class CreateLicenses < ActiveRecord::Migration[8.1]
       t.text :description_ja
       t.text :content
 
+      t.string :schema_version # 使用しないが、元データに存在するので取り込み
+      t.text :uri # 使用しないが、元データに存在するので取り込み
+      t.text :base_uri # 使用しないが、元データに存在するので取り込み
+
       t.timestamps
     end
 
@@ -14,6 +18,10 @@ class CreateLicenses < ActiveRecord::Migration[8.1]
       t.string :source_id, null: false, index: { unique: true }
       t.text :content_ja
       t.text :description_ja
+
+      t.string :schema_version # 使用しないが、元データに存在するので取り込み
+      t.text :uri # 使用しないが、元データに存在するので取り込み
+      t.text :base_uri # 使用しないが、元データに存在するので取り込み
 
       t.timestamps
     end
@@ -30,6 +38,10 @@ class CreateLicenses < ActiveRecord::Migration[8.1]
       t.string :source_id, null: false, index: { unique: true }
       t.text :name_ja
       t.text :description_ja
+
+      t.string :schema_version # 使用しないが、元データに存在するので取り込み
+      t.text :uri # 使用しないが、元データに存在するので取り込み
+      t.text :base_uri # 使用しないが、元データに存在するので取り込み
 
       t.timestamps
     end
