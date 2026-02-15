@@ -106,7 +106,7 @@ RSpec.describe "import:oss_license_data (integration)" do
         {
           "data" => {
             "id" => "cond_2",
-            "conditionType" => "notice",
+            "conditionType" => "RESTRICTION",
             "name" => [ { "language" => "ja", "text" => "著作権表示" } ],
             "description" => [ { "language" => "ja", "text" => "著作権表示を残す" } ],
             "schemaVersion" => 1,
