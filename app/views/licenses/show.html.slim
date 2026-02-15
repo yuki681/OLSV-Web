@@ -44,7 +44,7 @@ hr
                   = simple_format(permission.description_ja)
 
 - else
-  .alert.alert-secondary.mb-4 ユースケース（permissions）のデータがありません。
+  .alert.alert-secondary.mb-4 ユースケースのデータはありません。
 
 / Notices
 h2.h5.mt-4.mb-2 注意事項
@@ -54,15 +54,15 @@ hr
     - @license.notices.each_with_index do |n, i|
       - if n.content_ja.present?
         .mt-2
-          p.mb-0 = n.content_ja
+          p.mb-0 = simple_format(n.content_ja)
       - if n.description_ja.present?
       
         .alert.alert-secondary.mt-2.mb-4
           p.mb-2 補足:
-          p.mb-0 = n.description_ja
+          p.mb-0 = simple_format(n.description_ja)
 
 - else
-  .alert.alert-secondary.mb-4 notices はありません。
+  .alert.alert-secondary.mb-4 注意事項のデータはありません。
 
 / License content (collapsed)
 h2.h5.mt-4.mb-2 ライセンス本文
