@@ -37,6 +37,11 @@
 /license-data/*
 !/license-data/.keep
 /docs/*
+!/docs/home.png
+!/docs/licenses_index.png
+!/docs/licenses_show1.png
+!/docs/licenses_show2.png
+
 /test/fixtures/*
 !/test/fixtures/.keep
 
