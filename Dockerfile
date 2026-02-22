@@ -77,8 +77,8 @@ COPY --chown=rails:rails --from=build /rails /rails
 # Copy license data
 # OSS License Open Data (https://github.com/Hitachi/open-license) からダウンロードできる
 # licenses.json, actions.json, conditions.json, notices.json の4つのファイル、
-# もしくは同様の形式のオリジナルデータを、./open-license/ 以下にあらかじめ格納しておく
-COPY --chown=rails:rails ./open-license/ /open-license/
+# もしくは同様の形式のオリジナルデータを、./license-data/ 以下にあらかじめ格納しておく
+COPY --chown=rails:rails ./license-data/ /license-data/
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]

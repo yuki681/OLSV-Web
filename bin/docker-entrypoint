@@ -18,7 +18,7 @@ if [[ "${argv[0]:-}" == "./bin/rails" && "${argv[1]:-}" == "server" ]]; then
   ./bin/rails db:prepare
   # 以下のコマンドにおいて、ON_MISSING_REF=rollbackを指定すると、licenses.jsonでrefで指定されたキーが見つからない場合にインポートを中止する
   # デフォルトでは、警告を出力するがインポートを続行する
-  ./bin/rails import:oss_license_data PATH=/open-license/
+  ./bin/rails import:oss_license_data PATH=/license-data/
 fi
 
 exec "${@}"

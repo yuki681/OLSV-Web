@@ -34,8 +34,8 @@
 /config/*.key
 
 # Project specific
-/open-license/*
-!/open-license/.keep
+/license-data/*
+!/license-data/.keep
 /docs/*
 /test/fixtures/*
 !/test/fixtures/.keep
