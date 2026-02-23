@@ -16,12 +16,12 @@
     "autoprefixer": "^10.4.24",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
-    "nodemon": "^3.1.11",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "sass": "^1.97.3"
   },
   "devDependencies": {
-    "esbuild": "^0.27.3"
+    "esbuild": "^0.27.3",
+    "nodemon": "^3.1.14"   
   }
 }
