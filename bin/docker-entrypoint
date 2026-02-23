@@ -11,14 +11,17 @@ if [[ "${argv[0]}" == "./bin/thrust" ]]; then
   argv=("${argv[@]:1}")
 fi
 
+# 初回起動時のみ、データのインポートを行う
 # TODO: 編集機能の追加も見据え、DBの永続化や外部DBの利用を検討する必要がある
 # 例えば、別途コマンドの発行によりインポートしたり、管理画面からインポートできたりすると良いかもしれない
-if [[ "${argv[0]:-}" == "./bin/rails" && "${argv[1]:-}" == "server" ]]; then
-
+if [[ ! -f "/rails/tmp/.imported" && "${argv[0]:-}" == "./bin/rails" && "${argv[1]:-}" == "server" ]]; then
   ./bin/rails db:prepare
+
   # 以下のコマンドにおいて、ON_MISSING_REF=rollbackを指定すると、licenses.jsonでrefで指定されたキーが見つからない場合にインポートを中止する
   # デフォルトでは、警告を出力するがインポートを続行する
   ./bin/rails import:oss_license_data PATH=/license-data/
+  
+  touch /rails/tmp/.imported
 fi
 
 exec "${@}"
