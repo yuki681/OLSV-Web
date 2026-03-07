@@ -4,6 +4,6 @@ class HommeTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit root_url
 
-    assert_selector "h1", text: "OSS License Simple Viewer"
+    assert_selector "h1", text: "OSS License Simple Viewer Web"
   end
 end

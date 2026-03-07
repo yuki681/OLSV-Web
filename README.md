@@ -16,23 +16,16 @@
 
     詳細は、Docker公式サイト (https://www.docker.com/ja-jp/get-started/) 等をご確認ください。
  
-1. 本ソフトウェアをダウンロードします。
+1. このリポジトリをダウンロードします。
 
-1. ライセンスデータを用意し、本ソフトウェアの`/license-data/`にコピーします。
+1. ライセンスデータを用意し、このリポジトリの`/license-data/`にコピーします。
 
     ライセンスデータは、日立製作所様が公開しているOSS License Open Data (https://github.com/Hitachi/open-license) の`licenses.json`,`actions.json`,`conditions.json`,`notices.json`の4つのファイル、もしくは同様の形式で作成されたオリジナルのデータを利用できます。
-  
-    ```
-    LICENSE_PATH=/path/to/license_data # ライセンスデータが格納されたディレクトリ
-    ROOT_PATH=/path/to/root_of_this_software # 本ソフトウェアのルートディレクトリ
-
-    cd ${ROOT_PATH}
-    cp ${LICENSE_PATH}/licenses.json ${LICENSE_PATH}/actions.json ${LICENSE_PATH}/conditions.json ${LICENSE_PATH}/notices.json ./license-data/
-    ```
 
 1. 以下のコマンドでビルドを行います。
 
     ```
+    # このリポジトリのルートディレクトリで実行してください
     docker image build -t olsv_web .
     ```
 
