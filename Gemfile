@@ -50,7 +50,7 @@ gem "cssbundling-rails", "~> 1.4.3"
 gem "jsbundling-rails", "~> 1.3.1"
 
 # Pagination library [https://github.com/ddnexus/pagy]
-gem "pagy", "~> 43.3.1"
+gem "pagy", "~> 43.5.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
